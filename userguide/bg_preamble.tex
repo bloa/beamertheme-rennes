@@ -1,0 +1,31 @@
+\usecolortheme{Rennes}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{calc,fadings}
+
+\newcommand\bgtile[3]{% rho, theta, colour
+  \coordinate (o) at ($0.6*([turn]#2:#1)$);
+  \fill[rotate=90+#2,fill=#3] (o) ++(-0.3,-0.3) rectangle ++(0.6,0.2);
+  \fill[rotate=90+#2,fill=#3] (o) ++(-0.3,0.1) rectangle ++(0.6,0.2);
+}
+
+\newcommand\bglogo{%
+  \usebeamercolor{frametitle}
+  \foreach \x in {45,135,...,360}    {\bgtile{1}{\x}{fg!30!black}}
+  \foreach \x in {0,90,...,360}      {\bgtile{2}{\x}{fg!60!bg}}
+  \foreach \x in {22.5,67.5,...,360} {\bgtile{3}{\x}{fg!90!black!80!bg}}
+  \foreach \x in {0,90,...,360}      {\bgtile{4}{\x}{fg}}
+  \foreach \x in {45,135,...,360}    {\bgtile{4}{\x}{fg!60!bg}}
+  \foreach \x in {45,135,...,360}    {\bgtile{5}{\x}{fg}}
+  \foreach \x in {0,90,...,360}      {\bgtile{6}{\x}{fg!60!bg}}
+  \foreach \x in {22.5,67.5,...,360} {\bgtile{5}{\x}{fg!60!black!40!bg}}
+  \foreach \x in {22.5,67.5,...,360} {\bgtile{6}{\x}{fg!60!black!60!bg}}
+  \foreach \x in {11.25,33.65,...,360} {\bgtile{7}{\x}{fg!60!bg}}
+  \foreach \x in {11.25,33.65,...,360} {\bgtile{8}{\x}{fg!60!black!30!bg}}
+  \foreach \x in {0,45,...,360}      {\bgtile{8}{\x}{fg!60!bg}}
+  \foreach \x in {0,45,...,360}      {\bgtile{9}{\x}{fg!30!bg}}
+  \foreach \x in {22.5,67.5,...,360} {\bgtile{8}{\x}{fg!30!bg}}
+  \foreach \x in {22.5,67.5,...,360} {\bgtile{9}{\x}{fg!60!black!40!bg}}
+}

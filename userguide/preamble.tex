@@ -1,0 +1,34 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usetheme{Rennes}
+
+\usepackage{fontawesome}
+\usepackage{listings}
+\usepackage{tikz}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  commentstyle=\color{steelGray},
+  keywordstyle=\color{lavenderPurple},
+  frame=single,
+  columns=fullflexible,
+  aboveskip=0.5ex,
+  belowskip=0.5ex,
+}
+
+\lstdefinelanguage{diff}{
+  morecomment=[f][\color{lapisBlue}]{@@}, % group identifier
+  morecomment=[f][\color{crimsonRed}]-,   % deleted lines
+  morecomment=[f][\color{appleGreen}]+,   % added lines
+  morecomment=[f][\color{wisteriaViolet}]{---}, % header lines (must appear after +,-)
+  morecomment=[f][\color{wisteriaViolet}]{+++},
+}
+
+\newcommand{\mono}[1]{\texttt{#1}}
+\newcommand{\strong}[1]{\textbf{#1}}
+
+\pgfdeclareimage[height=1.2em]{smalliconarticle}{beamericonarticle}
+\newcommand{\bibicon}{\raisebox{-4pt}{\pgfuseimage{smalliconarticle}}}
+\newcommand{\bibarticle}[1]{\bibicon\xspace#1\xspace}
+\newcommand{\bibfootline}[1]{\gdef\myfootline{\bibarticle{#1}}}

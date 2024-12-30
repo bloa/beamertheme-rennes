@@ -1,0 +1,399 @@
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\documentclass[aspectratio=169,12pt]{beamer}
+
+\input{preamble}
+
+%================================================================================
+
+\title{\mono{Rennes}}
+\subtitle{An unofficial Beamer theme}
+\author{\textbf{Aymeric Blot}}
+\institute{Université de Rennes}
+\date{2024}
+
+\titlegraphic{%
+  \includegraphics[height=5ex]{logo-univ-rennes}\qquad%
+  \includegraphics[height=5ex]{logo-irisa}%
+}
+
+\begin{document}
+
+%================================================================================
+\section{Introduction}
+%================================================================================
+
+% define background
+\setbeamertemplate{background canvas}{%
+  \includegraphics{bg_title}%
+}
+% add title slide
+\maketitle
+% remove background for following slides
+\setbeamertemplate{background canvas}{}
+
+
+%================================================================================
+\section{Contents}
+%================================================================================
+
+\begin{frame}[fragile]{Background}
+  \structure{No default background}\\
+  The \mono{Rennes} theme is general and include no background.\\
+
+  \smallskip
+  The title page's background of this slide deck, which showcases the logo of the University of Rennes, is defined in \mono{bg\_title.tex}.
+
+  \medskip
+  \structure{Example}
+  \begin{lstlisting}[
+      basicstyle=\ttfamily\footnotesize,
+      language={[LaTeX]TeX},
+    ]
+% define background
+\setbeamertemplate{background canvas}{%
+  \includegraphics{bg_title}%
+}
+% add title slide
+\maketitle
+% remove background for following slides
+\setbeamertemplate{background canvas}{}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Accent Colours Commands \warn{(new)}}
+
+  \structure{More than just \mono{\textbackslash alert}}\\
+  The \mono{Rennes} theme include \alert{six} different easy-access colour commands.
+
+  \medskip
+  \begin{description}
+  \item[\mono{\textbackslash accent}] Defaults to the \accent{current \mono{structure} colour}
+  \item[\mono{\textbackslash alert}] Sharp contrast for \alert{critical information}
+  \item[\mono{\textbackslash warn}] Highlight for other \warn{important stuff}
+  \item[\mono{\textbackslash info}] Neutral third colour \info{just for the sake of it}
+  \item[\mono{\textbackslash subtle}] Very light touch of colour for \subtle{minor stuff}
+  \item[\mono{\textbackslash shade}] Grey for \shade{disabled stuff}, for example
+  \end{description}
+
+  \medskip
+  \structure{Difference from Beamer's \mono{\textbackslash alert}}\\
+  These six commands only change the \emph{default} font colour.
+\end{frame}
+
+\begin{frame}[fragile]{Accent\subtle{ed} Colours Commands \warn{(new)}}
+  \structure{\mono{-ed} commands variants:
+  \mono{\textbackslash alerted} \mono{\textbackslash warned} \mono{\textbackslash infoed} \mono{\textbackslash subtled} \mono{\textbackslash shaded}}\\
+  These variants temporarily change the accent colour.
+
+  \smallskip
+  \structure{Example}
+  \twocolumns{0.5}{
+    \begin{block}{Default \mono{block} environment}
+      \begin{itemize}
+      \item Uses the \shade{\mono{structure}} colour
+      \end{itemize}
+    \end{block}
+  }{%
+    \shaded{
+      \begin{block}{The exact same \mono{block}}
+        \begin{itemize}
+        \item But inside \shade{\mono{\textbackslash shaded}}!
+        \end{itemize}
+      \end{block}
+    }
+  }
+  \begin{lstlisting}[
+      basicstyle=\ttfamily\footnotesize,
+      language={[LaTeX]TeX},
+    ]
+\shaded{
+  \begin{block}{The exact same \mono{block}}
+    \begin{itemize}
+    \item But inside \shade{\mono{\textbackslash shaded}}!
+    \end{itemize}
+  \end{block}
+}
+  \end{lstlisting}
+  \medskip
+
+  \setfootline{%
+    These variants essentially replace \mono{exampleblock}/\mono{alertblock}\\
+    Note: all elements are affected (e.g., \mono{itemize}'s bullets)
+  }
+\end{frame}
+
+\begin{frame}[fragile]{Slide Structure}
+  \twocolumns[T]{0.42}{
+    \structure{Header}\\
+    With \mono{\textbackslash structure}
+  }{
+    \begin{lstlisting}[
+        basicstyle=\ttfamily\footnotesize,
+        language={[LaTeX]TeX},
+      ]^^J
+      \\structure\{Header\}\\\\^^J
+      With \\mono\{\\textbackslash structure\}^^J
+    \end{lstlisting}
+  }
+
+  \bigskip
+  \twocolumns[T]{0.42}{
+    \begin{structured}{Header}{Follow-up}
+      With \mono{\textbackslash structured} \warn{(new)}
+    \end{structured}
+  }{
+    \begin{lstlisting}[
+        basicstyle=\ttfamily\footnotesize,
+        language={[LaTeX]TeX},
+      ]^^J
+      \\begin\{structured\}\{Header\}\{Follow-up\}^^J
+      \ \ With \\mono\{\\textbackslash structured\}^^J
+      \ \ \\warn\{(new)\}^^J
+      \\end\{structured\}^^J
+    \end{lstlisting}
+  }
+
+  \bigskip
+  \twocolumns[T]{0.42}{
+    \begin{block}{Header}
+      With \mono{block}
+    \end{block}
+  }{
+    \begin{lstlisting}[
+        basicstyle=\ttfamily\footnotesize,
+        language={[LaTeX]TeX},
+      ]^^J
+      \\begin\{block\}\{Header\}^^J
+      \ \ With \\mono\{block\}^^J
+      \\end\{block\}^^J
+    \end{lstlisting}
+  }
+\end{frame}
+
+
+\begin{frame}[fragile]{Automated Side-by-Side Columns \warn{(new)}}
+  \structure{Two columns}\\
+  Use \shade{\mono{\textbackslash twocolumns}} to create two automatically spaced columns.
+
+  \smallskip
+  \twocolumns{0.5}{
+    \fbox{\makebox[\textwidth]{column ratio=0.5\vphantom{()}}}
+  }{
+    \fbox{\makebox[\textwidth]{auto (0.5)}}
+  }
+  \vspace{-1ex}
+  \twocolumns{0.66}{
+    \fbox{\makebox[\textwidth]{column ratio=0.66\vphantom{()}}}
+  }{
+    \fbox{\makebox[\textwidth]{auto (0.34)}}
+  }
+
+  %% \smallskip
+  \structure{Example}\\
+  \twocolumns{0.66}{
+    \begin{block}{Header} Text \end{block}
+  }{
+    \begin{block}{Header} Text \end{block}
+  }
+  \medskip
+  \begin{lstlisting}[
+      basicstyle=\ttfamily\footnotesize,
+      language={[LaTeX]TeX},
+    ]
+\twocolumns{0.66}{
+  \begin{block}{Header} Text \end{block}
+}{
+  \begin{block}{Header} Text \end{block}
+}
+  \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}{Automated Columns \warn{(new)}}
+  \structure{Three columns}\\
+  Use \shade{\mono{\textbackslash threecolumns}} to create three automatically spaced columns.
+
+  \smallskip
+  \threecolumns{0.25}{0.5}{
+    \fbox{\makebox[\textwidth]{r1=0.25\vphantom{()}}}
+  }{
+    \fbox{\makebox[\textwidth]{r2=0.5\vphantom{()}}}
+  }{
+    \fbox{\makebox[\textwidth]{auto (0.25)}}
+  }
+  \vspace{-1ex}
+  \threecolumns{0.33}{0.34}{
+    \fbox{\makebox[\textwidth]{r1=0.33\vphantom{()}}}
+  }{
+    \fbox{\makebox[\textwidth]{r2=0.34\vphantom{()}}}
+  }{
+    \fbox{\makebox[\textwidth]{auto (0.33)}}
+  }
+
+  %% \smallskip
+  \structure{Spacing}\\
+  Redefine \shade{\mono{\textbackslash twocolumnsep}}/\shade{\mono{\textbackslash threecolumnsep}} to change column spacing.
+
+  \medskip
+  \structure{Vertical alignment}\\
+  Use \shade{\mono{\textbackslash twocolumn[bctT]\{\}\{\}}} as you would with \shade{\mono{\textbackslash begin\{columns\}[bctT]}}
+
+  \medskip
+  \structure{Long lines}\\
+  \oneline{Use \shade{\mono{\textbackslash oneline}} to force text to stay on a single line (especially inside \shade{\mono{itemize}})}
+
+  \setfootline{Note: the above \shade{\mono{\textbackslash oneline}} example uses \shade{\mono{\textbackslash oneline}}\,!}
+\end{frame}
+
+\begin{frame}[fragile]{Footline \warn{(new)}}
+  \structure{Static footline}\\
+  Use \shade{\mono{\textbackslash setfootline}} to add text at the bottom of the slide\\
+  Footnotes reset every new \shade{\mono{frame}}
+
+  \medskip
+  \structure{Multi-line footline}\\
+  Simply use \shade{\mono{\textbackslash\textbackslash}} or \shade{\mono{\textbackslash newline}} for a line break, or separate as paragraphs.\\
+  %% Do not use \shade{\mono{\textbackslash linebreak}} to avoid justified text.
+
+  \medskip
+  \structure{Example}
+  \begin{lstlisting}[
+      basicstyle=\ttfamily\footnotesize,
+      language={[LaTeX]TeX},
+    ]
+\setfootline{%
+  This is a footline\\
+  $^1$With a (manually numbered) second line
+}
+  \end{lstlisting}
+
+  \setfootline{%
+    This is a footline\\
+    $^1$With a (manually numbered) second line
+  }
+\end{frame}
+
+\setleftlogo{\includegraphics[height=4ex]{logo-univ-rennes}}
+\setrightlogo{\includegraphics[height=4ex]{logo-irisa}}
+\begin{frame}[fragile]{Footline Graphics \warn{(new)}}
+  \structure{Two possible logo placements}
+  \begin{itemize}
+  \item \mono{\textbackslash setleftlogo\{\}}
+  \item \mono{\textbackslash setrightlogo\{\}}
+  \end{itemize}
+
+  \smallskip
+  The footline width is automatically recomputed.
+
+  \medskip
+  \structure{Example}
+  \begin{lstlisting}[
+      basicstyle=\ttfamily\footnotesize,
+      language={[LaTeX]TeX},
+    ]
+\setleftlogo{\includegraphics[height=2em]{logo-univ-rennes}}
+\setrightlogo{\includegraphics[height=2em]{logo-irisa}}
+  \end{lstlisting}
+
+  \setfootline{%
+    \faArrowLeft~\shade{\mono{\textbackslash setleftlogo}}
+    \hfill
+    \shade{\mono{\textbackslash setrightlogo}}~\faArrowRight\\
+    \phantom.\hfill page numbers are moved left as needed~\faArrowRight
+  }
+\end{frame}
+
+\setleftlogo{}
+\setrightlogo{}
+
+\begin{frame}{Overlay Page Numbers \warn{(new)}}
+  \structure{Don't use \mono{\textbackslash pause}}
+  \begin{itemize}[<+->]
+  \item screen refreshes are distracting
+  \item they waste a lot of attention
+  \item they encourage reading the new content out loud
+  \item the very last bit of content generally disappears much too fast
+  \end{itemize}
+  \pause[\thebeamerpauses]
+
+  \bigskip
+  \structure{Animation counter}\\
+  For the few good uses of overlays, slide numbers are shown as ``\subtle{X$\boldsymbol{\cdot}$Y}''
+  \setfootline{\hfill notice~\faArrowRight}
+\end{frame}
+
+\begin{frame}[fragile]{Curated Colour Scheme \warn{(new)}}
+  \newcommand\auxpaintdrop[5]{%
+    \fill[{#3},draw=#3!75!black,thick,shift={(2.5*#1,2.1*#2)}]
+    (-90:0.55) arc (-90:-300:0.55) [out=-30, in=-80]
+    to (42:0.85) [out=-60, in=0] to cycle;
+/    \node[{#4},style={font=\footnotesize}] at (2.5*#1,2.1*#2-0.8) {\phantom{(}#3\phantom{)}};
+    \node[{#3},style={font=\footnotesize}] at (2.5*#1,2.1*#2-1.15) {#5};
+  }
+  \newcommand\paintdrop[4]{\auxpaintdrop{#1}{#2}{#3}{#3}{#4}}
+  \newcommand\paintdropblack[4]{\auxpaintdrop{#1}{#2}{#3}{black}{#4}}
+
+  Base \mono{xcolor} colours are \textcolor{red}{not} \textcolor{green}{the} \textcolor{blue}{most} \textcolor{yellow}{readable} \textcolor{cyan}{or} \textcolor{magenta}{best} \textcolor{brown}{looking}...
+
+  \medskip
+  \centerline{
+    \begin{tikzpicture}[]
+      \paintdrop{0}{0}{lavenderPurple}{(\mono{\textbackslash subtle})}
+      \paintdrop{1}{0}{wisteriaViolet}{}
+      \paintdrop{2}{0}{cherryPink}{}
+      \paintdropblack{3}{0}{penguinWhite}{}
+      \paintdrop{4}{0}{ashGray}{}
+
+      \paintdrop{0}{1}{teaBrown}{}
+      \paintdrop{1}{1}{crimsonRed}{(\mono{\textbackslash alert})}
+      \paintdrop{2}{1}{vividOrange}{(\mono{\textbackslash warn})}
+      \paintdrop{3}{1}{goldenYellow}{}
+      \paintdrop{4}{1}{steelGray}{(\mono{\textbackslash shade})}
+
+      \paintdrop{0}{2}{lapisBlue}{(\mono{\textbackslash accent})}
+      \paintdrop{1}{2}{skyBlue}{}
+      \paintdrop{2}{2}{aquaGreen}{}
+      \paintdrop{3}{2}{appleGreen}{(\mono{\textbackslash info})}
+      \paintdrop{4}{2}{inkBlack}{}
+    \end{tikzpicture}
+  }
+
+  \setfootline{Note: are also defined \textcolor{steelGray}{steelGr\alert{e}y} and \textcolor{ashGray}{ashGr\alert{e}y}}
+\end{frame}
+
+
+%================================================================================
+\appendix
+\section{Appendix}
+%================================================================================
+
+\setbeamercolor{structure}{fg=steelGray}
+
+\frame{%
+  \emph{This slide intentionally left blank}%
+  \setfootline{\hfill notice~\faArrowRight{}}
+}
+
+\begin{frame}[fragile]{Appendix}
+  \structure{Separated slide numbers}\\
+  Simply use \shade{\mono{\textbackslash appendix}} before appendix slides.\\
+  Appendix slides start at ``\subtle{+1}''.
+
+  \medskip
+  \structure{Separated accent colour}\\
+  Redefine Beamer's \mono{structure} colour
+
+  \medskip
+  \structure{Example}\\
+  \begin{lstlisting}[
+      basicstyle=\ttfamily\footnotesize,
+      language={[LaTeX]TeX},
+    ]
+\appendix
+\setbeamercolor{structure}{fg=steelGray}
+  \end{lstlisting}
+
+  \setfootline{\hfill notice~\faArrowRight{}}
+\end{frame}
+
+\end{document}

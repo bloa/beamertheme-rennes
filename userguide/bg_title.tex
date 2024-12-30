@@ -1,0 +1,38 @@
+\documentclass[aspectratio=169,12pt]{beamer}
+
+\input{bg_preamble}
+
+% define background
+\setbeamertemplate{background canvas}{
+  \usebeamercolor{structure}%
+  \begin{tikzpicture}
+    \begin{scope}
+      % very light background colour
+      \clip (-0.5\paperwidth,-0.5\paperheight) rectangle ++(\paperwidth,\paperheight);
+      \fill[fg!1] (-0.5\paperwidth,-0.5\paperheight) rectangle ++(\paperwidth,\paperheight);
+      % first logo, centred left
+      \begin{scope}[shift={($(-0.5\paperwidth,0)-(0.1,0)$)},scale=0.8,opacity=0.625]
+        \path[scope fading=east] (0,-5) rectangle (12em,5); % !! rescaled
+        \bglogo
+      \end{scope}
+      % second logo, below right
+      \begin{scope}[shift={(0.44\paperwidth,-0.455\paperheight)},scale=2,opacity=0.0625,transparency group]
+        \bglogo
+      \end{scope}
+    \end{scope}
+  \end{tikzpicture}
+}
+
+% for metadata
+\title{}
+\subtitle{}
+\author{Aymeric Blot}
+\institute{Université de Rennes}
+\date{2024}
+\titlegraphic{}
+
+% single empty frame (showing background)
+\begin{document}
+\setbeamercolor{structure}{fg=lapisBlue}
+\frame{}
+\end{document}
