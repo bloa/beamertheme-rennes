@@ -7,7 +7,7 @@
 
 \title{\mono{Rennes}}
 \subtitle{An unofficial Beamer theme}
-\author{\textbf{Aymeric Blot}}
+\author{\strong{Aymeric Blot}}
 \institute{Université de Rennes}
 \date{2024}
 
@@ -23,11 +23,12 @@
 %================================================================================
 
 % define background
-\setbeamertemplate{background canvas}{%
-  \includegraphics{bg_title}%
-}
+\setbeamertemplate{background canvas}{\includegraphics{bg_title}}
 % add title slide
-\maketitle
+\frame[noframenumbering]{
+  \titlepage
+  \setfootline{\faLink~\url{https://github.com/bloa/beamertheme-rennes}}
+}
 % remove background for following slides
 \setbeamertemplate{background canvas}{}
 
@@ -63,16 +64,16 @@
 \begin{frame}{Accent Colours Commands \warn{(new)}}
 
   \structure{More than just \mono{\textbackslash alert}}\\
-  The \mono{Rennes} theme include \alert{six} different easy-access colour commands.
+  The \mono{Rennes} theme include \alert{six} different easy-access colour commands:
 
-  \medskip
+  \smallskip
   \begin{description}
-  \item[\mono{\textbackslash accent}] Defaults to the \accent{current \mono{structure} colour}
-  \item[\mono{\textbackslash alert}] Sharp contrast for \alert{critical information}
-  \item[\mono{\textbackslash warn}] Highlight for other \warn{important stuff}
-  \item[\mono{\textbackslash info}] Neutral third colour \info{just for the sake of it}
-  \item[\mono{\textbackslash subtle}] Very light touch of colour for \subtle{minor stuff}
-  \item[\mono{\textbackslash shade}] Grey for \shade{disabled stuff}, for example
+  \item[\mono{\textbackslash accent}] defaults to the \accent{current \mono{structure} colour}
+  \item[\mono{\textbackslash alert}] sharp contrast for \alert{critical information}
+  \item[\mono{\textbackslash warn}] highlight for other \warn{important stuff}
+  \item[\mono{\textbackslash info}] neutral third colour \info{just for the sake of it}
+  \item[\mono{\textbackslash subtle}] very light touch of colour for \subtle{minor stuff}
+  \item[\mono{\textbackslash shade}] grey for \shade{disabled stuff}, for example
   \end{description}
 
   \medskip
@@ -236,19 +237,19 @@
 
   \medskip
   \structure{Vertical alignment}\\
-  Use \shade{\mono{\textbackslash twocolumn[bctT]\{\}\{\}}} as you would with \shade{\mono{\textbackslash begin\{columns\}[bctT]}}
+  Use \shade{\mono{\textbackslash twocolumn[bctT]\{\}\{\}}} as you would with \shade{\mono{\textbackslash begin\{columns\}[bctT]}}.
 
   \medskip
   \structure{Long lines}\\
-  \oneline{Use \shade{\mono{\textbackslash oneline}} to force text to stay on a single line (especially inside \shade{\mono{itemize}})}
+  \oneline{Use \shade{\mono{\textbackslash oneline}} to force text to stay on a single line (especially inside \shade{\mono{itemize}}).}
 
   \setfootline{Note: the above \shade{\mono{\textbackslash oneline}} example uses \shade{\mono{\textbackslash oneline}}\,!}
 \end{frame}
 
 \begin{frame}[fragile]{Footline \warn{(new)}}
   \structure{Static footline}\\
-  Use \shade{\mono{\textbackslash setfootline}} to add text at the bottom of the slide\\
-  Footnotes reset every new \shade{\mono{frame}}
+  Use \shade{\mono{\textbackslash setfootline}} to add text at the bottom of the slide.\\
+  Footnotes reset every new \shade{\mono{frame}}.
 
   \medskip
   \structure{Multi-line footline}\\
@@ -318,7 +319,7 @@
 
   \bigskip
   \structure{Animation counter}\\
-  For the few good uses of overlays, slide numbers are shown as ``\subtle{X$\boldsymbol{\cdot}$Y}''
+  For the few good uses of overlays, slide numbers are shown as ``\subtle{X$\boldsymbol{\cdot}$Y}''.
   \setfootline{\hfill notice~\faArrowRight}
 \end{frame}
 
@@ -369,9 +370,8 @@
 
 \setbeamercolor{structure}{fg=steelGray}
 
-\frame{%
+\frame[noframenumbering,plain]{%
   \emph{This slide intentionally left blank}%
-  \setfootline{\hfill notice~\faArrowRight{}}
 }
 
 \begin{frame}[fragile]{Appendix}
@@ -381,7 +381,7 @@
 
   \medskip
   \structure{Separated accent colour}\\
-  Redefine Beamer's \mono{structure} colour
+  Redefine Beamer's \mono{structure} colour.
 
   \medskip
   \structure{Example}\\
