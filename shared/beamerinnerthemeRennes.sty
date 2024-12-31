@@ -172,27 +172,27 @@
 \setlength{\threecolumnsep}{2em}
 
 \newcommand{\twocolumns}[4][c]{%
-  \begin{beamercolorbox}[]{columns}%
+  \hbox{%
     \setlength{\mycolumnlen}{\dimexpr(\textwidth-\twocolumnsep)}%
     \begin{columns}[onlytextwidth,#1]%
-      \column{#2\mycolumnlen}#3
+      \column{\dimexpr(#2\mycolumnlen)}#3%
       %% \column{\twocolumnsep}%
-      \column{\dimexpr(\mycolumnlen-#2\mycolumnlen)}#4
-    \end{columns}
-  \end{beamercolorbox}
+      \column{\dimexpr(\mycolumnlen-#2\mycolumnlen)}#4%
+    \end{columns}%
+  }
 }
 
 \newcommand{\threecolumns}[6][c]{%
-  \begin{beamercolorbox}[]{columns}
+  \hbox{%
     \setlength{\mycolumnlen}{\dimexpr(\textwidth-2\twocolumnsep)}%
     \begin{columns}[onlytextwidth,#1]
-      \column{#2\mycolumnlen}#4
+      \column{#2\mycolumnlen}#4%
       %% \column{\twocolumnsep}%
-      \column{#3\mycolumnlen}#5
+      \column{#3\mycolumnlen}#5%
       %% \column{\twocolumnsep}%
-      \column{\dimexpr(\mycolumnlen-#2\mycolumnlen-#3\mycolumnlen)}#6
+      \column{\dimexpr(\mycolumnlen-#2\mycolumnlen-#3\mycolumnlen)}#6%
     \end{columns}
-  \end{beamercolorbox}
+  }
 }
 
 

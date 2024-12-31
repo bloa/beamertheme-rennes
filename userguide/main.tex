@@ -39,23 +39,19 @@
 
 \begin{frame}[fragile]{Background}
   \structure{No default background}\\
-  The \mono{Rennes} theme is general and include no background.\\
-
-  \smallskip
-  The title page's background of this slide deck, which showcases the logo of the University of Rennes, is defined in \mono{bg\_title.tex}.
+  The \mono{Rennes} theme does not include any predefined background.\\
+  The title page background in this slide deck, showcasing the University of Rennes logo, is only defined locally for this user guide.
 
   \medskip
-  \structure{Example}
+  \infoed{\structure{Example}}
   \begin{lstlisting}[
       basicstyle=\ttfamily\footnotesize,
       language={[LaTeX]TeX},
     ]
-% define background
-\setbeamertemplate{background canvas}{%
-  \includegraphics{bg_title}%
-}
+% define custom background
+\setbeamertemplate{background canvas}{\includegraphics{bg_title}}
 % add title slide
-\maketitle
+\frame[noframenumbering]{\titlepage}
 % remove background for following slides
 \setbeamertemplate{background canvas}{}
   \end{lstlisting}
@@ -86,8 +82,8 @@
   \mono{\textbackslash alerted} \mono{\textbackslash warned} \mono{\textbackslash infoed} \mono{\textbackslash subtled} \mono{\textbackslash shaded}}\\
   These variants temporarily change the accent colour.
 
-  \smallskip
-  \structure{Example}
+  \medskip
+  \infoed{\structure{Example}}
   \twocolumns{0.5}{
     \begin{block}{Default \mono{block} environment}
       \begin{itemize}
@@ -103,6 +99,7 @@
       \end{block}
     }
   }
+
   \begin{lstlisting}[
       basicstyle=\ttfamily\footnotesize,
       language={[LaTeX]TeX},
@@ -115,7 +112,6 @@
   \end{block}
 }
   \end{lstlisting}
-  \medskip
 
   \setfootline{%
     These variants essentially replace \mono{exampleblock}/\mono{alertblock}\\
@@ -124,7 +120,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{Slide Structure}
-  \twocolumns[T]{0.42}{
+  \twocolumns{0.42}{
     \structure{Header}\\
     With \mono{\textbackslash structure}
   }{
@@ -137,8 +133,8 @@
     \end{lstlisting}
   }
 
-  \bigskip
-  \twocolumns[T]{0.42}{
+  \medskip
+  \twocolumns{0.42}{
     \begin{structured}{Header}{Follow-up}
       With \mono{\textbackslash structured} \warn{(new)}
     \end{structured}
@@ -154,8 +150,8 @@
     \end{lstlisting}
   }
 
-  \bigskip
-  \twocolumns[T]{0.42}{
+  \medskip
+  \twocolumns{0.42}{
     \begin{block}{Header}
       With \mono{block}
     \end{block}
@@ -178,72 +174,107 @@
 
   \smallskip
   \twocolumns{0.5}{
-    \fbox{\makebox[\textwidth]{column ratio=0.5\vphantom{()}}}
+    \fbox{\makebox[\textwidth]{ratio=0.5 (provided)}}
   }{
-    \fbox{\makebox[\textwidth]{auto (0.5)}}
+    \fbox{\makebox[\textwidth]{ratio=0.5 (auto)}}
   }
-  \vspace{-1ex}
+  \smallskip
   \twocolumns{0.66}{
-    \fbox{\makebox[\textwidth]{column ratio=0.66\vphantom{()}}}
+    \fbox{\makebox[\textwidth]{ratio=0.66 (provided)}}
   }{
-    \fbox{\makebox[\textwidth]{auto (0.34)}}
+    \fbox{\makebox[\textwidth]{ratio=0.34 (auto)}}
   }
 
-  %% \smallskip
-  \structure{Example}\\
-  \twocolumns{0.66}{
-    \begin{block}{Header} Text \end{block}
-  }{
-    \begin{block}{Header} Text \end{block}
-  }
   \medskip
+  \infoed{\structure{Example}}
+  \twocolumns{0.66}{
+    \begin{block}{Header} Left \end{block}
+  }{
+    \begin{block}{Header} Right \end{block}
+  }
   \begin{lstlisting}[
       basicstyle=\ttfamily\footnotesize,
       language={[LaTeX]TeX},
     ]
 \twocolumns{0.66}{
-  \begin{block}{Header} Text \end{block}
+  \begin{block}{Header} Left \end{block}
 }{
-  \begin{block}{Header} Text \end{block}
+  \begin{block}{Header} Right \end{block}
 }
   \end{lstlisting}
 \end{frame}
 
-
-\begin{frame}{Automated Columns \warn{(new)}}
+\begin{frame}[fragile]{Automated Side-by-Side Columns \warn{(new)}}
   \structure{Three columns}\\
   Use \shade{\mono{\textbackslash threecolumns}} to create three automatically spaced columns.
 
   \smallskip
   \threecolumns{0.25}{0.5}{
-    \fbox{\makebox[\textwidth]{r1=0.25\vphantom{()}}}
+    \fbox{\makebox[\textwidth]{0.25 (provided)}}
   }{
-    \fbox{\makebox[\textwidth]{r2=0.5\vphantom{()}}}
+    \fbox{\makebox[\textwidth]{0.5 (provided)}}
   }{
-    \fbox{\makebox[\textwidth]{auto (0.25)}}
+    \fbox{\makebox[\textwidth]{0.25 (auto)}}
   }
-  \vspace{-1ex}
+  \smallskip
   \threecolumns{0.33}{0.34}{
-    \fbox{\makebox[\textwidth]{r1=0.33\vphantom{()}}}
+    \fbox{\makebox[\textwidth]{0.33 (provided)}}
   }{
-    \fbox{\makebox[\textwidth]{r2=0.34\vphantom{()}}}
+    \fbox{\makebox[\textwidth]{0.34 (provided)}}
   }{
-    \fbox{\makebox[\textwidth]{auto (0.33)}}
+    \fbox{\makebox[\textwidth]{0.33 (auto)}}
   }
-
-  %% \smallskip
-  \structure{Spacing}\\
-  Redefine \shade{\mono{\textbackslash twocolumnsep}}/\shade{\mono{\textbackslash threecolumnsep}} to change column spacing.
 
   \medskip
+  \infoed{\structure{Example}}
+  \threecolumns{0.25}{0.5}{
+    \begin{block}{Header} Left \end{block}
+  }{
+    \begin{block}{Header} Middle \end{block}
+  }{
+    \begin{block}{Header} Right \end{block}
+  }
+  \begin{lstlisting}[
+      basicstyle=\ttfamily\footnotesize,
+      language={[LaTeX]TeX},
+    ]
+\threecolumns{0.25}{0.5}{
+  \begin{block}{Header} Left \end{block}}{
+  \begin{block}{Header} Middle \end{block}}{
+  \begin{block}{Header} Right \end{block}}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Automated Side-by-Side Columns \warn{(new)}}
   \structure{Vertical alignment}\\
   Use \shade{\mono{\textbackslash twocolumn[bctT]\{\}\{\}}} as you would with \shade{\mono{\textbackslash begin\{columns\}[bctT]}}.
 
   \medskip
-  \structure{Long lines}\\
-  \oneline{Use \shade{\mono{\textbackslash oneline}} to force text to stay on a single line (especially inside \shade{\mono{itemize}}).}
+  \structure{Column spacing}\\
+  Redefine \shade{\mono{\textbackslash twocolumnsep}}/\shade{\mono{\textbackslash threecolumnsep}} to change column spacing.
 
-  \setfootline{Note: the above \shade{\mono{\textbackslash oneline}} example uses \shade{\mono{\textbackslash oneline}}\,!}
+  \medskip
+  \structure{Long lines}\\
+  \oneline{Use \shade{\mono{\textbackslash oneline}} to disable wrapping and stay on a single line.}
+
+  \medskip
+  \infoed{\structure{Example}}
+  \setlength{\twocolumnsep}{10em}
+  \twocolumns{0.5}{
+    \fbox{\makebox[\textwidth]{\oneline{left column (very very long)}}}}{
+    \fbox{\makebox[\textwidth]{right column}}}
+  \vspace{-0.75em}
+  \par
+  \begin{lstlisting}[
+      basicstyle=\ttfamily\footnotesize,
+      language={[LaTeX]TeX},
+    ]
+\setlength{\twocolumnsep}{10em} % default: 2em
+\twocolumns{0.5}{
+  \fbox{\makebox[\textwidth]{\oneline{left column (very very long)}}}}{
+  \fbox{\makebox[\textwidth]{right column}}}
+  \end{lstlisting}
+  \setfootline{Note: \shade{\mono{\textbackslash oneline}} is very useful to avoid text in \shade{\mono{itemize}} from wrapping}
 \end{frame}
 
 \begin{frame}[fragile]{Footline \warn{(new)}}
@@ -257,7 +288,7 @@
   %% Do not use \shade{\mono{\textbackslash linebreak}} to avoid justified text.
 
   \medskip
-  \structure{Example}
+  \infoed{\structure{Example}}
   \begin{lstlisting}[
       basicstyle=\ttfamily\footnotesize,
       language={[LaTeX]TeX},
@@ -287,7 +318,7 @@
   The footline width is automatically recomputed.
 
   \medskip
-  \structure{Example}
+  \infoed{\structure{Example}}
   \begin{lstlisting}[
       basicstyle=\ttfamily\footnotesize,
       language={[LaTeX]TeX},
@@ -377,14 +408,14 @@
 \begin{frame}[fragile]{Appendix}
   \structure{Separated slide numbers}\\
   Simply use \shade{\mono{\textbackslash appendix}} before appendix slides.\\
-  Appendix slides start at ``\subtle{+1}''.
+  Appendix slide numbers reset and start at ``\subtle{+1}''.
 
   \medskip
   \structure{Separated accent colour}\\
-  Redefine Beamer's \mono{structure} colour.
+  Redefine Beamer's \shade{\mono{structure}} colour.
 
   \medskip
-  \structure{Example}\\
+  \infoed{\structure{Example}}
   \begin{lstlisting}[
       basicstyle=\ttfamily\footnotesize,
       language={[LaTeX]TeX},
