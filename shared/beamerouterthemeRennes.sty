@@ -1,6 +1,6 @@
 \mode<presentation>
 
-\usepackage{appendixnumberbeamer}
+\usepackage{appendixnumberbeamer} % reset frame counter in appendix
 
 % ================================================================================
 %  footline
@@ -42,15 +42,14 @@
   \vskip1.4ex% v2pt
 }
 
-% reset frame counter in appendix
-\setbeamertemplate{page number in head/foot}[appendixpagenumber]
-
-% add "+" before appendix frame numbers
+% add "+" before appendix frame numbers ; empty with option [noframenumbering]
 \makeatletter
 \setbeamertemplate{page number in head/foot}{%
+  \ifbeamer@noframenumbering\else%
   \ifbeamer@inappendix\texttt{+}\fi%
-  \insertframenumber
-  \ifnum\beamer@slideinframe>1 $\boldsymbol{\cdot}$\number\beamer@slidenumber\fi
+  \insertframenumber%
+  \ifnum\beamer@slideinframe>1 $\boldsymbol{\cdot}$\number\beamer@slidenumber\fi%
+  \fi
 }
 \makeatother
 
