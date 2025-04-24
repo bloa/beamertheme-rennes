@@ -67,11 +67,31 @@
 \newcommand<>{\subtle}[1]{\begin{subtleenv}#2\relax#1\end{subtleenv}}
 \newcommand<>{\shade}[1]{\begin{shadeenv}#2\relax#1\end{shadeenv}}
 
-\newcommand<>{\alerted}[1]{\begingroup\setbeamercolor{structure}{use=alerted text,fg=alerted text.fg}#1\endgroup}
-\newcommand<>{\warned}[1]{\begingroup\setbeamercolor{structure}{use=warned text,fg=warned text.fg}#1\endgroup}
-\newcommand<>{\infoed}[1]{\begingroup\setbeamercolor{structure}{use=infoed text,fg=infoed text.fg}#1\endgroup}
-\newcommand<>{\subtled}[1]{\begingroup\setbeamercolor{structure}{use=subtled text,fg=subtled text.fg}#1\endgroup}
-\newcommand<>{\shaded}[1]{\begingroup\setbeamercolor{structure}{use=shaded text,fg=shaded text.fg}#1\endgroup}
+\newenvironment<>{alertedenv}{\begin{altenv}#1%
+    {\setbeamercolor{structure}{use=alerted text,fg=alerted text.fg}}
+    {}{\color{.}}{}\ignorespaces}{\ifhmode\unskip\fi\end{altenv}}
+\newenvironment<>{accentedenv}{\begin{altenv}#1%
+    {\setbeamercolor{structure}{use=accented text,fg=accented text.fg}}
+    {}{\color{.}}{}\ignorespaces}{\ifhmode\unskip\fi\end{altenv}}
+\newenvironment<>{warnedenv}{\begin{altenv}#1%
+    {\setbeamercolor{structure}{use=warned text,fg=warned text.fg}}
+    {}{\color{.}}{}\ignorespaces}{\ifhmode\unskip\fi\end{altenv}}
+\newenvironment<>{infoedenv}{\begin{altenv}#1%
+    {\setbeamercolor{structure}{use=infoed text,fg=infoed text.fg}}
+    {}{\color{.}}{}\ignorespaces}{\ifhmode\unskip\fi\end{altenv}}
+\newenvironment<>{subtledenv}{\begin{altenv}#1%
+    {\setbeamercolor{structure}{use=subtled text,fg=subtled text.fg}}
+    {}{\color{.}}{}\ignorespaces}{\ifhmode\unskip\fi\end{altenv}}
+\newenvironment<>{shadedenv}{\begin{altenv}#1%
+    {\setbeamercolor{structure}{use=shaded text,fg=shaded text.fg}}
+    {}{\color{.}}{}\ignorespaces}{\ifhmode\unskip\fi\end{altenv}}
+
+\newcommand<>{\alerted}[1]{\begin{alertedenv}#2\relax#1\end{alertedenv}}
+\newcommand<>{\accented}[1]{\begin{accentedenv}#2\relax#1\end{accentedenv}}
+\newcommand<>{\warned}[1]{\begin{warnedenv}#2\relax#1\end{warnedenv}}
+\newcommand<>{\infoed}[1]{\begin{infoedenv}#2\relax#1\end{infoedenv}}
+\newcommand<>{\subtled}[1]{\begin{subtledenv}#2\relax#1\end{subtledenv}}
+\newcommand<>{\shaded}[1]{\begin{shadedenv}#2\relax#1\end{shadedenv}}
 
 \setbeamercolor{accented text}{use=structure,fg=structure.fg}
 \setbeamercolor{alerted text}{fg=crimsonRed}
