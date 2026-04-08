@@ -4,28 +4,54 @@
 %  title page
 % ================================================================================
 
+\defbeamertemplate*{title}{rennes}[1][]{%
+  \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+    \usebeamerfont{title}\inserttitle\par%
+    \ifx\insertsubtitle\@empty%
+    \else%
+      \vskip0.25em%
+      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+    \fi%
+  \end{beamercolorbox}%
+}
+
 \defbeamertemplate*{author}{rennes}[1][]{%
   \begin{beamercolorbox}[sep=2pt,center,#1]{author}
-    \usebeamerfont{author}\insertauthor
-  \end{beamercolorbox}
+    {\usebeamerfont{author}\insertauthor}%
+  \end{beamercolorbox}%
 }
 
 \defbeamertemplate*{institute}{rennes}[1][]{%
-  \begin{beamercolorbox}[sep=2pt,center,#1]{institute}
-    \usebeamerfont{institute}\insertinstitute
-  \end{beamercolorbox}
+  \ifx\insertinstitute\@empty%
+  \else%
+    \begin{beamercolorbox}[sep=2pt,center,#1]{institute}
+      {\usebeamerfont{institute}\insertinstitute}%
+    \end{beamercolorbox}%
+  \fi%
 }
 
 \defbeamertemplate*{date}{rennes}[1][]{%
+  \ifx\insertdate\@empty%
+  \else%
     \begin{beamercolorbox}[sep=2pt,center,#1]{date}
-      \usebeamerfont{date}\insertdate
+      {\usebeamerfont{date}\insertdate}%
     \end{beamercolorbox}
+  \fi%
+}
+
+\defbeamertemplate*{titlegraphic}{rennes}{%
+  \ifx\inserttitlegraphic\@empty%
+  \else%
+    \begin{beamercolorbox}[sep=2pt,center]{titlegraphic}
+      {\inserttitlegraphic\par}%
+    \end{beamercolorbox}
+  \fi%
 }
 
 \defbeamertemplate*{title page}{rennes}[1][]{%
   \vbox{}
   \vfill
-  \vskip6ex\par
+  \vskip4ex\par
   \begingroup
     \centering
     \usebeamertemplate{title}
